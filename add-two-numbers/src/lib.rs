@@ -31,16 +31,6 @@ impl ListNode {
         result.reverse();
         result
     }
-
-    fn vals_num(self) -> i128 {
-        self.vals()
-            .iter()
-            .map(|x| x.to_string())
-            .collect::<Vec<_>>()
-            .join("")
-            .parse::<i128>()
-            .unwrap()
-    }
 }
 
 pub struct Solution {}
@@ -62,12 +52,44 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let l1_vals = l1.unwrap().vals_num();
-        let l2_vals = l2.unwrap().vals_num();
-        let sum = l1_vals + l2_vals;
-        let mut sum = sum.to_string().chars().collect::<Vec<_>>();
-        sum.reverse();
-        let sum = sum.iter().map(|x| x.to_digit(10).unwrap() as i32).collect();
-        Solution::vec_to_listnode(sum)
+        let l1_vals = &mut l1.unwrap().vals();
+        let l2_vals = &mut l2.unwrap().vals();
+        let mut sum_list = vec![];
+        // 进位：0 无需进位 1 需要进位
+        let mut carry = 0;
+        loop {
+            // 取node最后一个数字，如果node为空则为0
+            let n1 = if l1_vals.len() == 0 {
+                0
+            } else {
+                l1_vals.pop().unwrap()
+            };
+            let n2 = if l2_vals.len() == 0 {
+                0
+            } else {
+                l2_vals.pop().unwrap()
+            };
+            // 两数相加
+            let mut sum = n1 + n2;
+            // 如果有进位则加1，然后重置进位标志
+            if carry == 1 {
+                sum = sum + carry;
+                carry = 0;
+            }
+            let result;
+            // 如果相加结果大于等于10，则求余取余数并将进位标志为1
+            if sum >= 10 {
+                result = sum % 10;
+                carry = 1;
+            } else {
+                result = sum;
+            }
+            sum_list.push(result);
+            if l1_vals.len() == 0 && l2_vals.len() == 0 && carry == 0 {
+                break;
+            }
+        }
+
+        Solution::vec_to_listnode(sum_list)
     }
 }
