@@ -12,6 +12,9 @@ fn implement_queue_using_stacks_push() {
     let mut my_queue = MyQueue::new();
     my_queue.push(1);
     assert_eq!(vec![1], my_queue.queue);
+    my_queue.push(2);
+    my_queue.push(3);
+    assert_eq!(vec![3, 2, 1], my_queue.queue);
 }
 
 #[test]
@@ -21,7 +24,7 @@ fn implement_queue_using_stacks_pop() {
     my_queue.push(2);
     my_queue.push(3);
     assert_eq!(1, my_queue.pop());
-    assert_eq!(vec![2, 3], my_queue.queue);
+    assert_eq!(vec![3, 2], my_queue.queue);
 }
 
 #[test]
@@ -31,6 +34,7 @@ fn implement_queue_using_stacks_peek() {
     my_queue.push(2);
     my_queue.push(3);
     assert_eq!(1, my_queue.peek());
+    assert_eq!(vec![3, 2, 1], my_queue.queue);
 }
 
 #[test]
