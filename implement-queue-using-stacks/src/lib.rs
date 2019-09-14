@@ -29,6 +29,7 @@ impl MyQueue {
     }
 
     pub fn pop(&mut self) -> i32 {
+        // 因为在存放队列时就已经是把第一个数放到栈的最后，所以这里直接用栈的pop方法即可
         if self.queue.len() > 0 {
             return self.queue.pop().unwrap();
         }
@@ -36,6 +37,7 @@ impl MyQueue {
     }
 
     pub fn peek(&mut self) -> i32 {
+        // 先从栈中弹出再压入同样的数即可
         let result = self.queue.pop().unwrap();
         self.queue.push(result);
         result
