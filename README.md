@@ -15,7 +15,7 @@
 #### 第三周： 二叉树与图
 
 * [x] 简单： 翻转二叉树    [力扣](https://leetcode-cn.com/problems/invert-binary-tree/)  （二叉树）-- [解答](./invert-binary-tree/README.md)
-* [ ] 中等： 所有可能的路径  [力扣](https://leetcode-cn.com/problems/all-paths-from-source-to-target/)   （DAG）
+* [x] 中等： 所有可能的路径  [力扣](https://leetcode-cn.com/problems/all-paths-from-source-to-target/)   （DAG）-- [解答](./all-paths-from-source-to-target/README.md)
 
 #### 第四周： 字符串与哈希
 
