@@ -8,8 +8,9 @@ impl Solution {
 
         let mut start = 0;
         let mut end = str.len() - 1;
+        let mut swap: char;
         loop {
-            let swap = str[start];
+            swap = str[start];
             str[start] = str[end];
             str[end] = swap;
             start += 1;

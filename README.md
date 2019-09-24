@@ -19,5 +19,5 @@
 
 #### 第四周： 字符串与哈希
 
-* [ ] 简单：反转字符串   [力扣](https://leetcode-cn.com/problems/reverse-string/)  （字符串）
+* [x] 简单：反转字符串   [力扣](https://leetcode-cn.com/problems/reverse-string/)  （字符串）-- [解答](./reverse-string/README.md)
 * [ ] 中等： 设计哈希映射    [力扣](https://leetcode-cn.com/problems/design-hashmap/)   （哈希）
